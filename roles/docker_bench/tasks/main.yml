@@ -1,0 +1,55 @@
+---
+
+- name: Install audit
+  yum: 
+    name=audit
+    state=present
+
+- name: Add auditd rules
+  lineinfile:
+    dest: /etc/audit/rules.d/audit.rules
+    line: "{{ item.line }}"
+  with_items:
+    - { line: '-w /usr/bin/docker -p wa -k docker' }     
+    - { line: '-w /var/lib/docker -p wa -k docker' }     
+    - { line: '-w /etc/docker -p wa -k docker' }     
+    - { line: '-w /usr/lib/systemd/system/docker.socket -p wa -k docker' }     
+    - { line: '-w /usr/lib/systemd/system/docker.service -p wa -k docker' }     
+    - { line: '-w /var/run/docker.sock -p wa -k docker' }     
+    - { line: '-w /etc/default/docker -p wa -k docker' }     
+    - { line: '-w /etc/docker/daemon.json -p wa -k docker' }     
+    - { line: '-w /usr/bin/docker-containerd -p wa -k docker' }     
+    - { line: '-w /usr/bin/docker-runc -p wa -k docker' }     
+
+- name: Restart auditd daemon
+  service:
+    name=auditd
+    state=restarted
+
+- name: Configure environment
+  lineinfile:
+    dest: /etc/environment
+    line: "{{ item.line }}"
+  with_items:
+    - { line: 'DOCKER_CONTENT_TRUST=1' }
+
+- name: Create /etc/default/docker
+  file:
+    path: /etc/default/docker
+    state: touch
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy daemon.json
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Restart Docker
+  service:
+    name=docker
+    state=restarted
