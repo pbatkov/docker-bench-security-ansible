@@ -33,7 +33,7 @@
   with_items:
     - { line: 'DOCKER_CONTENT_TRUST=1' }
 
-- name: Create /etc/default/docker
+- name: Create Docker environment
   file:
     path: /etc/default/docker
     state: touch
