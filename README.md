@@ -1,5 +1,6 @@
 # docker-bench-security-ansible
 Ansible playbook for configuring a Docker host according to security best practices (Docker Bench)
+
 Tested on clean RHEL 7.5 && Docker CE 18.06.1
 
 ## Run
