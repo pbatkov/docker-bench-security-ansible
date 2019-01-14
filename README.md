@@ -2,7 +2,9 @@
 Ansible playbook for configuring a Docker host according to security best practices (Docker Bench)
 
 ## Run
+```
 ansible-playbook docker_bench.yml -i hosts
+```
 
 ## Inventory
 ```
