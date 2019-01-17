@@ -41,6 +41,14 @@
     group: root
     mode: 0644
 
+- name: Create docker user
+  user:
+    name: docker
+    groups: docker
+    state: present
+    shell: /bin/false
+    createhome: no
+
 - name: Copy daemon.json
   copy:
     src: daemon.json
