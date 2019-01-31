@@ -7,5 +7,6 @@
     	"syslog-address": "udp://1.2.3.4:1111"
   	},
 	"userland-proxy": false,
+	"no-new-privileges": true,
 	"userns-remap": "default"
 }
