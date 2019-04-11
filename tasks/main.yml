@@ -23,4 +23,4 @@
     - restart auditd
 
 - name: Journal
-  shell: journalctl -xe
+  command: journalctl -xe
