@@ -19,10 +19,14 @@
     - {line: '-w /etc/docker/daemon.json -p wa'}
     - {line: '-w /usr/bin/docker-containerd -p wa'}
     - {line: '-w /usr/bin/docker-runc -p wa'}
-  notify:
-    - restart auditd
+#  notify:
+#    - restart auditd
 
-- name: Journal
+- name: restart
+  command: systemctl restart auditd
+  tags: skip_ansible_lint
+
+- name: status
   command: systemctl status auditd
   register: result
   tags: skip_ansible_lint
