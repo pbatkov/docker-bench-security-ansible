@@ -1,0 +1,7 @@
+---
+- name: Debian
+  include_vars: Debian.yml
+
+- name: auditd
+  apt:
+    name: auditd

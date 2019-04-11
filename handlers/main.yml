@@ -1,0 +1,6 @@
+---
+- name: restart auditd
+  service:
+    name: auditd
+    state: restarted
+  become: true

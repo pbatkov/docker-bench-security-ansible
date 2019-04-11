@@ -1,0 +1,7 @@
+---
+- name: RedHat
+  include_vars: RedHat.yml
+
+- name: audit
+  yum:
+    name: audit

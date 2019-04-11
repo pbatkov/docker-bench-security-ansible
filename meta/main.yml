@@ -1,0 +1,19 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: "030 && pbatkov"
+  description: Docker Bench Security
+  license: license (MIT)
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - bionic
+  galaxy_tags:
+    - docker
+    - security
+    - bench

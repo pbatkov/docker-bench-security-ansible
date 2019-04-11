@@ -1,0 +1,25 @@
+---
+- include_tasks: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: auditd rules
+  lineinfile:
+    dest: "{{ docker_bench_security_audit_file }}"
+    line: "{{ item.line }}"
+  with_items:
+    - {line: '-w /usr/bin/docker -p wa'}
+    - {line: '-w /var/lib/docker -p wa'}
+    - {line: '-w /etc/docker -p wa'}
+    - {line: '-w /usr/lib/systemd/system/docker.service -p wa'}
+    - {line: '-w /usr/lib/systemd/system/docker.socket -p wa'}
+    - {line: '-w /etc/default/docker -p wa'}
+    - {line: '-w /etc/docker/daemon.json -p wa'}
+    - {line: '-w /usr/bin/docker-containerd -p wa'}
+    - {line: '-w /usr/bin/docker-runc -p wa'}
+    - {line: '-w /usr/lib/systemd/system/docker.service -p wa'}
+    - {line: '-w /usr/lib/systemd/system/docker.socket -p wa'}
+  notify:
+    - restart auditd
