@@ -19,7 +19,5 @@
     - {line: '-w /etc/docker/daemon.json -p wa'}
     - {line: '-w /usr/bin/docker-containerd -p wa'}
     - {line: '-w /usr/bin/docker-runc -p wa'}
-    - {line: '-w /usr/lib/systemd/system/docker.service -p wa'}
-    - {line: '-w /usr/lib/systemd/system/docker.socket -p wa'}
   notify:
     - restart auditd
