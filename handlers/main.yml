@@ -3,8 +3,10 @@
   service:
     name: auditd
     state: stopped
+  become: yes
 
 - name: start auditd
   service:
     name: auditd
     state: started
+  become: yes
