@@ -1,6 +1,11 @@
 ---
-- name: restart auditd
+- name: stop auditd
   service:
     name: auditd
-    state: restarted
-  become: true
+    state: stopped
+
+- name: start auditd
+  service:
+    name: auditd
+    state: started
+    enabled: yes
