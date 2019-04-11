@@ -22,12 +22,3 @@
   notify:
     - stop auditd
     - start auditd
-
-- name: status
-  command: systemctl status auditd
-  register: result
-  tags: skip_ansible_lint
-
-- name: showing report
-  debug:
-    var: result
