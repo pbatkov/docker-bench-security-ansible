@@ -23,7 +23,7 @@
     - restart auditd
 
 - name: Journal
-  command: journalctl -xe
+  command: systemctl status auditd
   register: result
   tags: skip_ansible_lint
 
