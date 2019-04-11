@@ -1,6 +1,0 @@
----
-
-- hosts: new_docker_hosts
-  become: yes
-  roles:
-    - docker_bench
