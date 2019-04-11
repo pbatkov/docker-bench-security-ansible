@@ -21,4 +21,6 @@
     - {line: '-w /usr/bin/docker-runc -p wa'}
   notify:
     - restart auditd
-    - status auditd
+
+- name: Status
+  shell: systemctl status auditd
