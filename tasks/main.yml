@@ -22,5 +22,5 @@
   notify:
     - restart auditd
 
-- name: Status
-  shell: systemctl status auditd
+- name: Journal
+  shell: journalctl -xe
