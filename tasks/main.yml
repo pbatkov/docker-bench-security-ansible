@@ -24,3 +24,4 @@
 
 - name: Journal
   command: journalctl -xe
+  tags: skip_ansible_lint
