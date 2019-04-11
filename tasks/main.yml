@@ -25,9 +25,8 @@
 - name: Journal
   command: journalctl -xe
   register: result
-  ignore_errors: yes
   tags: skip_ansible_lint
 
 - name: showing report
   debug:
-   var: result
+    var: result
