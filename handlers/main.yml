@@ -4,3 +4,9 @@
     name: auditd
     state: restarted
   become: true
+
+- name: status auditd
+  service:
+    name: auditd
+    state: restarted
+  become: true
